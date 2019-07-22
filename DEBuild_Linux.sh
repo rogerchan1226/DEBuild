@@ -45,22 +45,22 @@ else
     $PKG_MANAGER update -y
 fi
 
-if [ INSTALL_C_DEBuild=y ]; then
+if [ $INSTALL_C_DEBuild = y ]; then
     $PKG_MANAGER install build-essential -y
 fi
 
-if [ INSTALL_GIT=y ]; then
+if [ $INSTALL_GIT = y ]; then
     $PKG_MANAGER install git -y
 fi
 
-if [ INSTALL_SUBL_STABLE=y ]; then
+if [ $INSTALL_SUBL_STABLE = y ]; then
     wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
     echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
     if [ $selection = "1" ]; then
         $PKG_MANAGER updated
     fi
     $PKG_MANAGER install sublime-text -y
-elif [ INSTALL_SUBL_DEV=y ]; then
+elif [ $INSTALL_SUBL_DEV = y ]; then
     wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
     echo "deb https://download.sublimetext.com/ apt/dev/" | tee /etc/apt/sources.list.d/sublime-text.list
     if [ $selection = "1" ]; then

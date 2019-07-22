@@ -1,7 +1,7 @@
 # You can modify this file to personalize install packages by turn on(y) or turn off(n) the following config.
 
 # Install C develop environment
-INSTALL_C_DEBuild=y
+INSTALL_C_DEBuild=n
 
 # Install git
 INSTALL_GIT=y
