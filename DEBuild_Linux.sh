@@ -49,6 +49,16 @@ if [ $INSTALL_C_DEBuild = y ]; then
     $PKG_MANAGER install build-essential -y
 fi
 
+if [ $INSTALL_CLIB = y ]; then
+    $PKG_MANAGER install -y libncurses5-dev
+    $PKG_MANAGER install -y gawk
+    $PKG_MANAGER install -y mtd-utils
+    $PKG_MANAGER install -y lib32z1
+    $PKG_MANAGER install -y lib32ncurses5
+    $PKG_MANAGER install -y libc6:i386
+    $PKG_MANAGER install -y zlib1g:i386
+fi
+
 if [ $INSTALL_GIT = y ]; then
     $PKG_MANAGER install git -y
 fi

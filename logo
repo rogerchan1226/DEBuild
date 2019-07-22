@@ -10,5 +10,5 @@ echo $'    ROGER        ROGER ROGER           ROGER      ROGER                  
 echo $'   ROGER       ROGER  ROGER           ROGER       ROGER                   '
 echo $'  ROGER      ROGER   ROGER           ROGER       ROGER                    '
 echo $' ROGERROGERROGE     ROGERROGERROGER ROGERROGERROGERR                      '
-echo $'ROGERROGERR        ROGERROGERROGER ROGERROGERROGE   uild. Beta 1.0      \n'
+echo $'ROGERROGERR        ROGERROGERROGER ROGERROGERROGE   uild. Beta 1.1      \n'
 printf "\e[0m"
