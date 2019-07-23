@@ -8,13 +8,13 @@ if [ $UID -ne 0 ]; then
     echo "Superuser privileges are required to run this script."
     echo "e.g. \"sudo $0\""
     exit 1
-elif [ ! -f config ]; then
+elif [ ! -f src/config ]; then
     echo 'ERROR!! "config" setting file lost !!'
     exit 1
 fi
 
 # Show logo and DEBuild version
-source logo
+source src/version
 
 # Choose the linux platform 
 echo    "Which Linux platform you are using now?"
@@ -29,52 +29,26 @@ while [ $selection != "1" ] && [ $selection != "2" ]; do
 done
 
 if [ $selection = "1" ]; then
-    PKG_MANAGER="apt-get"
+    echo "PKG_MANAGER=apt-get" > src/settings.conf
 else
-    PKG_MANAGER="yum"
+    echo "PKG_MANAGER = yum" > src/settings.conf
 fi
 
-# Include ".config" settings file
-source config
-
-# Start install enviroment
-if [ $selection = "1" ]; then
-    $PKG_MANAGER update
-    $PKG_MANAGER upgrade -y
-else
-    $PKG_MANAGER update -y
+# Several config settings setup to "settings.conf"
+source src/config
+if [ IDE_SUBL_STABLE_INSTALL=y ]; then
+    echo "SUBL_VER=stable" >> src/settings.conf
+elif [ IDE_SUBL_DEV_INSTALL=y ]; then
+    echo "SUBL_VER=dev" >> src/settings.conf
 fi
 
-if [ $INSTALL_C_DEBuild = y ]; then
-    $PKG_MANAGER install build-essential -y
+if [ IDE_SUBL_STABLE_INSTALL=y ] ||
+   [ IDE_SUBL_DEV_INSTALL=y ]; then
+    echo "SUBL_WILL_INSTALL=y" >> src/settings.conf
+    echo "SUBL_PACK_SET = wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -" >> src/settings.conf
+    echo "SUBL_PACK_SET += echo \"deb https://download.sublimetext.com/ apt/\$(SUBL_VER)/\" | tee /etc/apt/sources.list.d/sublime-text.list" >> src/settings.conf
 fi
 
-if [ $INSTALL_CLIB = y ]; then
-    $PKG_MANAGER install -y libncurses5-dev
-    $PKG_MANAGER install -y gawk
-    $PKG_MANAGER install -y mtd-utils
-    $PKG_MANAGER install -y lib32z1
-    $PKG_MANAGER install -y lib32ncurses5
-    $PKG_MANAGER install -y libc6:i386
-    $PKG_MANAGER install -y zlib1g:i386
-fi
-
-if [ $INSTALL_GIT = y ]; then
-    $PKG_MANAGER install git -y
-fi
-
-if [ $INSTALL_SUBL_STABLE = y ]; then
-    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-    echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
-    if [ $selection = "1" ]; then
-        $PKG_MANAGER updated
-    fi
-    $PKG_MANAGER install sublime-text -y
-elif [ $INSTALL_SUBL_DEV = y ]; then
-    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-    echo "deb https://download.sublimetext.com/ apt/dev/" | tee /etc/apt/sources.list.d/sublime-text.list
-    if [ $selection = "1" ]; then
-        $PKG_MANAGER update
-    fi
-    $PKG_MANAGER install sublime-text -y
-fi
+# Start install environment
+cd src
+make -f setup.mk
