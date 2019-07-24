@@ -1,4 +1,4 @@
-INSTALL = install -y
+INSTALL=install -y
 
 -include settings.conf
 -include config
@@ -6,26 +6,28 @@ INSTALL = install -y
 all: start_install
 
 start_install:
-ifdef GIT_INSTALL
+ifeq ($(CONFIG_GIT_INSTALL), y)
 	$(PKG_MANAGER) $(INSTALL) git
 endif
 
-ifdef INSTALL_C_DEBuild
+ifeq ($(CONFIG_INSTALL_C_DEBuild), y)
 	$(PKG_MANAGER) $(INSTALL) build-essential
 endif
 
-ifdef INSTALL_CLIB
-	$(PKG_MANAGER) $(INSTALL) libncurses5-dev
-    $(PKG_MANAGER) $(INSTALL) gawk
-    $(PKG_MANAGER) $(INSTALL) mtd-utils
-    $(PKG_MANAGER) $(INSTALL) lib32z1
-    $(PKG_MANAGER) $(INSTALL) lib32ncurses5
-    $(PKG_MANAGER) $(INSTALL) libc6:i386
+ifeq ($(CONFIG_INSTALL_CLIB), y)
+	$(PKG_MANAGER) $(INSTALL) libncurses5-dev; \
+    $(PKG_MANAGER) $(INSTALL) gawk;            \
+	$(PKG_MANAGER) $(INSTALL) mtd-utils;       \
+    $(PKG_MANAGER) $(INSTALL) lib32z1;         \
+    $(PKG_MANAGER) $(INSTALL) lib32ncurses5;   \
+    $(PKG_MANAGER) $(INSTALL) libc6:i386;      \
     $(PKG_MANAGER) $(INSTALL) zlib1g:i386
 endif
 
-ifdef SUBL_WILL_INSTALL
+ifeq ($(CONFIG_SUBL_WILL_INSTALL), y)
 	$(SUBL_PACK_SET)
-	#if
+ifeq ($(PKG_MANAGER), apt-get)
+	$(PKG_MANAGER) update
+endif
 	$(PKG_MANAGER) $(INSTALL) sublime-text
 endif

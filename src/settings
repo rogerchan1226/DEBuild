@@ -1,2 +1,0 @@
-PKG_MANAGER = apt-get
-SUBL_VER=stable
