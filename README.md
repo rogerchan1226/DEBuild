@@ -1,14 +1,15 @@
 <p align="center">
-  <img src="https://drive.google.com/file/d/1gLwBsD-ZakmafviL__pVWoTSWvc4UpLE/view?usp=sharing" alt="DEBuild">
+  ![image](https://drive.google.com/file/d/1gLwBsD-ZakmafviL__pVWoTSWvc4UpLE/view?usp=sharing)
 </p>
 
+<p align="center">
 <a href="https://github.com/rogerchan1226/DEBuild/releases">
-    <img src="https://img.shields.io/github/release/rogerchan1226/DEBuild" alt="GitHub release">
+<img src="https://img.shields.io/github/release/rogerchan1226/DEBuild" alt="GitHub release">
 </a>
-
 <a href="https://github.com/rogerchan1226/DEBuild/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+<img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
 </a>
+</p>
 
 DEBuild (Develop Environment Build) this project idea was come out when I trying to build up my linux OS on VirtualBox. It can help to build up all tools and environment automatically, before you start your devalop job.<br>
 
