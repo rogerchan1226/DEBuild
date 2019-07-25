@@ -1,7 +1,6 @@
 <p align="center">
   <img width="320" src="https://github.com/rogerchan1226/DEBuild/blob/master/DEBuild_logo.png">
 </p>
-
 <p align="center">
 <a href="https://github.com/rogerchan1226/DEBuild/releases">
 <img src="https://img.shields.io/github/release/rogerchan1226/DEBuild" alt="GitHub release">
