@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="320" src="https://github.com/rogerchan1226/DEBuild/DEBuild_logo.png">
+  <img width="320" src="https://github.com/rogerchan1226/DEBuild/blob/master/DEBuild_logo.png">
 </p>
 
 <p align="center">
