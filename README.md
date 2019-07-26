@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="320" src="https://github.com/rogerchan1226/DEBuild/blob/master/DEBuild_logo.png">
+  <img width="320" src="https://github.com/rogerchan1226/Blog/blob/master/repo_images/DEBuild/DEBuild_logo.png">
 </p>
 <p align="center">
 <a href="https://github.com/rogerchan1226/DEBuild/releases">
