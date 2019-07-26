@@ -10,9 +10,9 @@
 </a>
 </p>
 
-DEBuild (Develop Environment Build) this project idea was come out when I trying to build up my linux OS on VirtualBox. It can help to build up all tools and environment automatically, before you start your devalop job.<br>
+DEBuild (Develop Environment Build) this project idea was came out when I try to build up my linux OS on VirtualBox. It help to build up all tools and environment automatically, before you start your devalop job.<br>
 
-__Also let myself get familiar with Shell Script & Makefile langurages.__
+__Also made myself get familiar with Shell Script & Makefile langurages.__
 
 I know that name "DEB" will let you little bit confuse with Linux package format ".deb". But... too late! I'm lazy to change it lol!!! 😬
 
@@ -30,7 +30,7 @@ __Warning:__ _DEBuild now only works on Debain-based Linux.(It will be support F
 ## Packages supported
 
 __DEBuild now release as Beta version.__
-In Beta version, I focus on program structure like program working flow, bugs ...etc. So now only support few packages only. I will fill in more packages installation soon in near future.
+In Beta version, I focus on program structure like program working flow, bugs ...etc. Now only support few packages. I will fill in more packages installation soon in near future.
 
 _These packages all possible to turn off by modify `src/config` file._
 * Git
@@ -38,5 +38,3 @@ _These packages all possible to turn off by modify `src/config` file._
 * Several C libraries
 * Sublime IDE (Stable/Development version)
 
-## Update message
-Please refer to "Commit" message.
