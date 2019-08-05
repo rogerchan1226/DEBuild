@@ -2,15 +2,15 @@
   <img width="320" src="https://github.com/rogerchan1226/Blog/blob/master/repo_images/DEBuild/DEBuild_logo.png">
 </p>
 <p align="center">
-<a href="https://github.com/rogerchan1226/DEBuild/releases">
-<img src="https://img.shields.io/github/release/rogerchan1226/DEBuild" alt="GitHub release">
-</a>
-<a href="https://github.com/rogerchan1226/DEBuild/blob/master/LICENSE">
-<img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
-</a>
+  <a href="https://github.com/rogerchan1226/DEBuild/releases">
+    <img src="https://img.shields.io/github/release/rogerchan1226/DEBuild" alt="GitHub release">
+  </a>
+  <a href="https://github.com/rogerchan1226/DEBuild/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a>
 </p>
 
-DEBuild (Develop Environment Build) this project idea was came out when I try to build up my linux OS on VirtualBox. It help to build up all tools and environment automatically, before you start your devalop job.<br>
+DEBuild (Develop Environment Build) this project idea was came out when I try to build up my linux OS on VirtualBox. It help to build up all tools and environment automatically, before you start your develop job.<br>
 
 __Also made myself get familiar with Shell Script & Makefile langurages.__
 
