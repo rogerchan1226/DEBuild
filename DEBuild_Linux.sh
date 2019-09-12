@@ -14,6 +14,13 @@ elif [ ! -f src/config ]; then
     exit 1
 fi
 printf "\e[0m"
+#enter information
+echo "Please enter your name :"
+read NAME
+echo "NAME=$NAME" > src/settings.conf
+echo "please enter your email :"
+read EMAIL 
+echo "EMAIL=$EMAIL" >> src/settings.conf
 
 # Show logo and DEBuild version
 printf "\e[32m"
@@ -53,11 +60,11 @@ platform_select () {
     case $selection in
         1 )
             PKG_MANAGER=apt-get
-            echo "PKG_MANAGER=apt-get" > src/settings.conf
+            echo "PKG_MANAGER=apt-get" >> src/settings.conf
             ;;
         2 )
             PKG_MANAGER=yum
-            echo "PKG_MANAGER=yum" > src/settings.conf
+            echo "PKG_MANAGER=yum" >> src/settings.conf
             ;;
         * )
             printf "\e[37;41m"

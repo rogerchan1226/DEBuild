@@ -1,4 +1,7 @@
 INSTALL=install -y
+GIT=git
+CFG=config
+GOL=--global
 
 -include settings.conf
 -include config
@@ -8,6 +11,16 @@ all: start_install
 start_install:
 ifeq ($(CONFIG_GIT_INSTALL), y)
 	$(PKG_MANAGER) $(INSTALL) git
+	$(GIT) $(CFG) $(GOL) user.name "$(NAME)"
+	$(GIT) $(CFG) $(GOL) user.EMAIL "$(EMAIL)"
+	$(GIT) $(CFG) $(GOL) alias.br branch
+	$(GIT) $(CFG) $(GOL) alias.co checkout
+	$(GIT) $(CFG) $(GOL) alias.cp cherry-pick
+	$(GIT) $(CFG) $(GOL) alias.st stash
+	$(GIT) $(CFG) $(GOL) alias.sub submodule	
+	$(GIT) $(CFG) $(GOL) core.editor vim
+	$(GIT) $(CFG) $(GOL) color.ui true
+	$(GIT) $(CFG) --list	
 endif
 
 ifeq ($(CONFIG_INSTALL_C_DEBuild), y)
