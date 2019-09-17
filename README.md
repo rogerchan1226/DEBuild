@@ -38,4 +38,3 @@ _These packages all possible to turn off by modify `src/config` file._
 * Several C libraries
 * Sublime IDE (Stable/Development version)
 
-Today I invite one of a partner to help me finish this project
