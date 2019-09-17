@@ -2,7 +2,7 @@
 # by turn on(y) or turn off(n) the following config.
 
 # Install git
-CONFIG_GIT_INSTALL=n
+CONFIG_GIT_INSTALL=y
 
 # For C program developer
 # 1. Install C develop environment
