@@ -23,7 +23,7 @@ I know that name "DEB" will let you little bit confuse with Linux package format
 __Warning:__ _DEBuild now only works on Debain-based Linux.(It will be support Fedora-based & MacOS lately)_
 
 * You don't have to install anything before launch this tool.
-* Set up package settings at `src/config` file before launch this tool.
+* Set up package settings at `src/config` file.
 * Make sure your terminal `cd` to `DEBuild` path.
 * Type `sudo ./DEBuild_linux.sh` to launch it.
 
