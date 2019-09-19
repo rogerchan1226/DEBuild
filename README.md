@@ -38,3 +38,6 @@ _These packages all possible to turn off by modify `src/config` file._
 * Several C libraries
 * Sublime IDE (Stable/Development version)
 
+## Contributor
+
+* [Jie Min](https://github.com/jiemincao/ "Title")
