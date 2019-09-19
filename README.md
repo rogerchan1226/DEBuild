@@ -23,7 +23,7 @@ I know that name "DEB" will let you little bit confuse with Linux package format
 __Warning:__ _DEBuild now only works on Debain-based Linux.(It will be support Fedora-based & MacOS lately)_
 
 * You don't have to install anything before launch this tool.
-* Set up package settings at `src/config` file.
+* Set up package settings at `config` file.
 * Make sure your terminal `cd` to `DEBuild` path.
 * Type `sudo ./DEBuild_linux.sh` to launch it.
 
@@ -32,7 +32,7 @@ __Warning:__ _DEBuild now only works on Debain-based Linux.(It will be support F
 __DEBuild now release as Beta version.__
 In Beta version, I focus on program structure like program working flow, bugs ...etc. Now only support few packages. I will fill in more packages installation soon in near future.
 
-_These packages all possible to turn off by modify `src/config` file._
+_These packages all possible to turn off by modify `config` file._
 * Git
 * C develop environment (build-essential)
 * Several C libraries
