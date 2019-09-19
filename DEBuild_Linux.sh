@@ -3,27 +3,11 @@
 # DEBuild means "Develop Environment Build"
 # I created it for automatically build up my linux develop enviroment.
 
-# DEBuild's tool packages & superuser privileges error detect
-printf "\e[31m"
-if [ $UID -ne 0 ]; then
-    echo "Superuser privileges are required to run this script."
-    echo "e.g. \"sudo $0\""
-    exit 1
-elif [ ! -f src/config ]; then
-    echo 'ERROR!! "config" setting file lost !!'
-    exit 1
-fi
-printf "\e[0m"
-
-# Show logo and DEBuild version
-printf "\e[32m"
-    cat src/version
-printf "\e[0m"
-
-# Ask user if start install packages or not
-echo    "Do you want to install following packages?   "
-    source src/setup.sh
-echo -n "Answer [Y/n]: "
+ERROR (){
+    printf "\e[37;41m"
+        echo -n "ERROR!" 
+    printf "\e[0m"
+}
 
 install_yn () {
     read answer
@@ -36,9 +20,7 @@ install_yn () {
             exit -1
             ;;
         * )
-            printf "\e[37;41m"
-                echo -n "ERROR!" 
-            printf "\e[0m"
+            ERROR
             echo    " Sorry, answer not recognized"
             echo -n "Please answer again... [Y/n]: "
             install_yn
@@ -46,9 +28,6 @@ install_yn () {
     esac
 }
 
-install_yn
-
-# Choose the linux platform 
 platform_select () {
     case $selection in
         1 )
@@ -60,9 +39,7 @@ platform_select () {
             echo "PKG_MANAGER=yum" >> src/settings.conf
             ;;
         * )
-            printf "\e[37;41m"
-                echo -n "ERROR!" 
-            printf "\e[0m"
+            ERROR
             echo -n " 1 or 2 only, please select again [1/2]: "
             input_pselect
             ;;
@@ -82,6 +59,34 @@ platform () {
     input_pselect
 }
 
+
+# DEBuild's tool packages & superuser privileges error detect
+printf "\e[31m"
+if [ $UID -ne 0 ]; then
+    echo "Superuser privileges are required to run this script."
+    echo "e.g. \"sudo $0\""
+    exit 1
+elif [ ! -f config ]; then
+    ERROR
+    echo ' "config" setting file lost !!'
+    exit 1
+fi
+printf "\e[0m"
+
+# Show logo and DEBuild version
+printf "\e[32m"
+    cat src/logo
+printf "\e[0m"
+
+# Ask user if start install following packages or not
+# and also do "config" error detect.
+echo    "Do you want to install following packages?   "
+    source src/pkg_tables.sh
+echo -n "Answer [Y/n]: "
+
+install_yn
+
+# Choose the linux platform 
 echo "Detect platform Name..."
 
 if [ -f /etc/\*-release ]; then
@@ -115,17 +120,8 @@ else
     esac
 fi
 
-# Several config settings setup to "settings.conf"
-if [ $CONFIG_IDE_SUBL_STABLE_INSTALL = "y" ] || [ $CONFIG_IDE_SUBL_DEV_INSTALL = "y" ]; then
-    if [ $CONFIG_IDE_SUBL_STABLE_INSTALL = "y" ]; then
-        SUBL_VER=stable
-    elif [ $CONFIG_IDE_SUBL_DEV_INSTALL = "y" ]; then
-        SUBL_VER=dev
-    fi
-    echo "CONFIG_SUBL_WILL_INSTALL=y" >> src/settings.conf
-    echo "SUBL_PACK_SET = wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -" >> src/settings.conf
-    echo "SUBL_PACK_SET += echo \"deb https://download.sublimetext.com/ apt/$SUBL_VER/\" | tee /etc/apt/sources.list.d/sublime-text.list" >> src/settings.conf
-fi
+# Include several package settings
+source src/pkg_settings.sh
 
 # Install "make" command
 if [ $selection = "1" ]; then
@@ -134,11 +130,6 @@ if [ $selection = "1" ]; then
 else
     echo "Fedora-based not available yet.... Please wait for next version update!!"
     exit -1
-fi
-
-# Include "git" setting options
-if [ $CONFIG_GIT_INSTALL = "y" ] && [ $CONFIG_GIT_COMMANDS_SETUP = "y" ]; then
-    source src/git/user_info.sh
 fi
 
 # Start install environment

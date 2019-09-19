@@ -1,11 +1,10 @@
-source src/config
+source config
 
 
 # Check out if there got wrong settings
+# Sublime install error detect
 if [ $CONFIG_IDE_SUBL_STABLE_INSTALL = "y" ] && [ $CONFIG_IDE_SUBL_DEV_INSTALL = "y" ]; then
-    printf "\e[37;41m"
-        echo -n "ERROR!" 
-    printf "\e[0m"
+    ERROR
     echo " Sublime install fail, can't turn on Stable/DEV both, Select one only."
 	exit -1
 fi
@@ -36,7 +35,7 @@ if [ $CONFIG_IDE_SUBL_STABLE_INSTALL = "y" ]; then
 fi
 
 if [ $CONFIG_IDE_SUBL_DEV_INSTALL = "y" ]; then
-	echo "| Sublime develop version   |"
+	echo "| Sublime develop version  |"
 	total_pkgs=$((total_pkgs + 1))
 fi
 

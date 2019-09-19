@@ -1,3 +1,8 @@
+
+
+
+
+
 git_info_input () {
     #enter information
     echo "Please enter your name :"

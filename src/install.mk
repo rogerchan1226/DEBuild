@@ -1,7 +1,7 @@
 INSTALL=install -y
 
 -include settings.conf
--include config
+-include ../config
 
 all: start_install
 
@@ -19,12 +19,12 @@ endif
 
 ifeq ($(CONFIG_INSTALL_CLIB), y)
 	$(PKG_MANAGER) $(INSTALL) libncurses5-dev; \
-    $(PKG_MANAGER) $(INSTALL) gawk;            \
+	$(PKG_MANAGER) $(INSTALL) gawk;            \
 	$(PKG_MANAGER) $(INSTALL) mtd-utils;       \
-    $(PKG_MANAGER) $(INSTALL) lib32z1;         \
-    $(PKG_MANAGER) $(INSTALL) lib32ncurses5;   \
-    $(PKG_MANAGER) $(INSTALL) libc6:i386;      \
-    $(PKG_MANAGER) $(INSTALL) zlib1g:i386
+	$(PKG_MANAGER) $(INSTALL) lib32z1;         \
+	$(PKG_MANAGER) $(INSTALL) lib32ncurses5;   \
+	$(PKG_MANAGER) $(INSTALL) libc6:i386;      \
+	$(PKG_MANAGER) $(INSTALL) zlib1g:i386
 endif
 
 ifeq ($(CONFIG_SUBL_WILL_INSTALL), y)
