@@ -2,12 +2,6 @@ GIT=git
 CFG=config
 GOL=--global
 
--include settings.conf
--include config
-
-all: git_simple_set
-
-git_simple_set:
 	$(GIT) $(CFG) $(GOL) user.name "$(NAME)"
 	$(GIT) $(CFG) $(GOL) user.EMAIL "$(EMAIL)"
 	$(GIT) $(CFG) $(GOL) alias.br branch

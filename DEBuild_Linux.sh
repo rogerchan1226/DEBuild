@@ -21,40 +21,6 @@ printf "\e[32m"
     cat src/version
 printf "\e[0m"
 
-git_info () {
-    #enter information
-    echo "Please enter your name :"
-    read NAME
-    echo "NAME=$NAME" > src/settings.conf
-    echo "please enter your email :"
-    read EMAIL 
-    echo "EMAIL=$EMAIL" >> src/settings.conf
-}
-git_confirm=0
-
-git_set_yn () {
-    echo    "Do you want to simaple setting git command?"
-    echo -n "Answer [Y/n]: "
-    read git_answer
-    case $git_answer in
-        [Yy] | [Yy][Ee][Ss] )
-            git_confirm=1
-            git_info
-            ;;
-        [Nn] | [Nn][Oo] )
-            echo "End !"
-            ;;
-        * )
-            printf "\e[37;41m"
-                echo -n "ERROR!" 
-            printf "\e[0m"
-            echo    " Sorry, answer not recognized"
-            echo -n "Please answer again... [Y/n]: "
-            git_set_yn
-            ;;
-    esac
-}
-
 # Ask user if start install packages or not
 echo    "Do you want to install following packages?   "
     source src/setup.sh
@@ -65,9 +31,6 @@ install_yn () {
     case $answer in
         [Yy] | [Yy][Ee][Ss] )
             echo "Start install... "
-            if [ $CONFIG_GIT_INSTALL = "y" ]; then
-                git_set_yn          
-            fi
             ;;
         [Nn] | [Nn][Oo] )
             echo "End !"
@@ -91,7 +54,7 @@ platform_select () {
     case $selection in
         1 )
             PKG_MANAGER=apt-get
-            echo "PKG_MANAGER=apt-get" >> src/settings.conf
+            echo "PKG_MANAGER=apt-get" > src/settings.conf
             ;;
         2 )
             PKG_MANAGER=yum
@@ -153,8 +116,6 @@ else
     esac
 fi
 
-
-
 # Several config settings setup to "settings.conf"
 if [ $CONFIG_IDE_SUBL_STABLE_INSTALL = "y" ] || [ $CONFIG_IDE_SUBL_DEV_INSTALL = "y" ]; then
     if [ $CONFIG_IDE_SUBL_STABLE_INSTALL = "y" ]; then
@@ -176,10 +137,12 @@ else
     exit -1
 fi
 
+# Include "git" setting options
+if [ $CONFIG_GIT_INSTALL = "y" ] && [ $CONFIG_GIT_COMMANDS_SETUP = "y" ]; then
+    source src/git/user_info.sh
+fi
+
 # Start install environment
 pushd src/ || exit -1
     make -f install.mk
-    if [ $git_confirm = "1" ]; then
-        make -f gitset.mk
-    fi
 popd

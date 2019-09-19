@@ -8,6 +8,9 @@ all: start_install
 start_install:
 ifeq ($(CONFIG_GIT_INSTALL), y)
 	$(PKG_MANAGER) $(INSTALL) git
+ifeq ($(CONFIG_GIT_COMMANDS_SETUP), y)
+-include git/gitset.mk
+endif
 endif
 
 ifeq ($(CONFIG_INSTALL_C_DEBuild), y)
