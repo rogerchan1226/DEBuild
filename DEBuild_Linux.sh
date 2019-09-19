@@ -4,7 +4,6 @@
 # I created it for automatically build up my linux develop enviroment.
 
 # DEBuild's tool packages & superuser privileges error detect
-source src/config
 printf "\e[31m"
 if [ $UID -ne 0 ]; then
     echo "Superuser privileges are required to run this script."

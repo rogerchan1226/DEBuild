@@ -8,6 +8,4 @@ git_info_input () {
     echo "EMAIL=$EMAIL" >> src/settings.conf
 }
 
-if [ $CONFIG_GIT_INSTALL = "y" ]; then
-    git_info_input        
-fi
+git_info_input
