@@ -9,7 +9,7 @@ start_install:
 ifeq ($(CONFIG_GIT_INSTALL), y)
 	$(PKG_MANAGER) $(INSTALL) git
 ifeq ($(CONFIG_GIT_COMMANDS_SETUP), y)
--include git/gitset.mk
+-include appsrc/git/gitset.mk
 endif
 endif
 
@@ -28,7 +28,7 @@ ifeq ($(CONFIG_INSTALL_CLIB), y)
 endif
 
 ifeq ($(CONFIG_SUBL_WILL_INSTALL), y)
-	$(SUBL_PACK_SET)
+	$(SUBL_PKG_SET)
 ifeq ($(PKG_MANAGER), apt-get)
 	$(PKG_MANAGER) update
 endif

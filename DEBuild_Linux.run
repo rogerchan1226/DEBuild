@@ -3,11 +3,12 @@
 # DEBuild means "Develop Environment Build"
 # I created it for automatically build up my linux develop enviroment.
 
-ERROR (){
-    printf "\e[37;41m"
-        echo -n "ERROR!" 
-    printf "\e[0m"
-}
+##
+## functions
+##
+
+ERROR (){ printf "\e[37;41m"; echo -n " ERROR! "; printf "\e[0m"; }
+PASS  (){ printf "\e[37;42m"; echo -n " PASS "  ; printf "\e[0m"; }
 
 install_yn () {
     read answer
@@ -59,6 +60,9 @@ platform () {
     input_pselect
 }
 
+##
+## Argument parsing
+##
 
 # DEBuild's tool packages & superuser privileges error detect
 printf "\e[31m"
@@ -81,12 +85,16 @@ printf "\e[0m"
 # Ask user if start install following packages or not
 # and also do "config" error detect.
 echo    "Do you want to install following packages?   "
-    source src/pkg_tables.sh
+    source src/pkgPreCheck.sh
 echo -n "Answer [Y/n]: "
 
 install_yn
 
-# Choose the linux platform 
+##
+## code
+##
+
+# Select the linux platform 
 echo "Detect platform Name..."
 
 if [ -f /etc/\*-release ]; then
@@ -98,17 +106,13 @@ else
     ## echo $platform_value
     case $platform_value in
         debian )
-            printf "\e[37;42m"
-                echo -n "PASS" 
-            printf "\e[0m"
+            PASS
             echo " Oh~ you are Debian-based user huh.."
             selection=1
             platform_select
             ;;
         Fedora )
-            printf "\e[37;42m"
-                echo -n "PASS" 
-            printf "\e[0m"
+            PASS
             echo " Oh~ you are Fedora-based user huh.."
             selection=2
             platform_select
@@ -121,7 +125,7 @@ else
 fi
 
 # Include several package settings
-source src/pkg_settings.sh
+source src/pkgInsMgr.sh
 
 # Install "make" command
 if [ $selection = "1" ]; then

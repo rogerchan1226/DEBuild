@@ -42,9 +42,7 @@ fi
 if [ $total_pkgs = "0" ]; then
 	echo "| NONE                     |"
 	echo "|__________________________|"
-	printf "\e[37;41m"
-        echo -n "ERROR!" 
-    printf "\e[0m"
+	ERROR
 	echo " There is no packages will be install, please checkout \"src/config\" and try again."
 	exit -1
 else

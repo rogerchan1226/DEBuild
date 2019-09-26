@@ -1,18 +1,23 @@
+## 
+# Install packages options
+# Build by Roger 
+#
 # You can modify this file to personalize install packages 
 # by turn on(y) or turn off(n) the following config.
 
 #=====================================================================
-# Git
+#                               Git
 #---------------------------------------------------------------------
 # Install git
 CONFIG_GIT_INSTALL=n
 #
-# Set up several git commands
+# Set up several git commands (script)
 CONFIG_GIT_COMMANDS_SETUP=n
 #=====================================================================
 
+
 #=====================================================================
-# For C program developer
+#                      For C program developer
 #---------------------------------------------------------------------
 # 1. Install C develop environment
 CONFIG_INSTALL_C_DEBuild=n
@@ -21,8 +26,9 @@ CONFIG_INSTALL_C_DEBuild=n
 CONFIG_INSTALL_CLIB=n
 #=====================================================================
 
+
 #=====================================================================
-# Install sublime (STABLE version / DEVelopment version)
+#       Install sublime (STABLE version / DEVelopment version)
 #---------------------------------------------------------------------
 CONFIG_IDE_SUBL_STABLE_INSTALL=n
 CONFIG_IDE_SUBL_DEV_INSTALL=n
