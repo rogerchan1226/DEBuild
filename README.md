@@ -10,13 +10,23 @@
   </a>
 </p>
 
-DEBuild (Develop Environment Build) this project idea was came out when I try to build up my linux OS on VirtualBox. It help to build up all tools and environment automatically, before you start your develop job.<br>
+DEBuild (Develop Environment Build) this project idea was came out when I try to build up my linux OS. It help to build up all tools and environment automatically, before you start your develop job.<br>
 
 __Also made myself get familiar with Shell Script & Makefile langurages.__
 
-I know that name "DEB" will let you little bit confuse with Linux package format ".deb". But... too late! I'm lazy to change it lol!!! 😬
+I know that name it "DEB" will let you little bit confuse with Linux package format ".deb". But... too late! I'm lazy to change it lol!!! 😬
 
 ## Getting Started
+
+### Architecture
+
+<p align="center">
+  <img width="500" src="https://github.com/rogerchan1226/Blog/blob/master/repo_images/DEBuild/DEBuild_architecture.png">
+</p>
+
+* __Blue  Arrow:__ Program's working flow. <br/>
+* __Red   Arrow:__ Meaning of input.       <br/>
+* __Green Arrow:__ Meaning of output.      <br/>
 
 ### Prerequisites
 
